@@ -2,14 +2,15 @@ require('dotenv').config();
 const express = require("express")
 const bodyParser = require('body-parser')
 const app = express()
+const config = require('./config/config')
 const dinabotRoutes = require('./controllers/dinabot')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(dinabotRoutes)
 
-app.listen(3000, () => {
- console.log("El servidor está inicializado en el puerto 3000")
+app.listen(config.api.port, () => {
+ console.log(`El servidor está inicializado en el puerto ${config.api.port}`)
 })
 
 app.use('*', (req, res, next) => {
