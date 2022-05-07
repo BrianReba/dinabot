@@ -10,9 +10,11 @@ router.post('/create', function (req, res) {
 
 router.get('/dinabot', function (req, res) {
     res.json({
-        name: 'Dinabot'
+        name: 'Dinabot', 
+        author: 'Dinacompany', 
+        date: new Date()
     })
-    res.status(201)
+    res.status(200)
 })
 
 
