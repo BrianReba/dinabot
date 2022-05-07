@@ -8,4 +8,12 @@ router.post('/create', function (req, res) {
     res.status(201)
 })
 
+router.get('/dinabot', function (req, res) {
+    res.json({
+        name: 'Dinabot'
+    })
+    res.status(201)
+})
+
+
 module.exports = router
