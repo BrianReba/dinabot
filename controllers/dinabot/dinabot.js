@@ -1,10 +1,10 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
+const dinabotService = require('../../services/dinabot')
 
-router.post('/create', function (req, res) {
-    res.json({
-        bot: 'created'
-    })
+router.post('/create', async function (req, res) {
+    const dinaResponse = await dinabotService.createBot(req.body)
+    res.json(dinaResponse)
     res.status(201)
 })
 
