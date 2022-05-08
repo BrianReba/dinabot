@@ -3,11 +3,13 @@ const express = require("express")
 const bodyParser = require('body-parser')
 const app = express()
 const config = require('./config/config')
-const dinabotRoutes = require('./controllers/dinabot')
+const routes = require('./controllers/routes')
+const mongodb = require('./db/mongoose')
 
+mongodb.connect()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(dinabotRoutes)
+routes(app)
 
 app.listen(config.api.port, () => {
  console.log(`El servidor está inicializado en el puerto ${config.api.port}`)
