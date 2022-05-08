@@ -8,7 +8,7 @@ router.post('/create', function (req, res) {
     res.status(201)
 })
 
-router.get('/dinabot', function (req, res) {
+router.get('/get', function (req, res) {
     res.json({
         name: 'Dinabot', 
         author: 'Dinacompany', 
