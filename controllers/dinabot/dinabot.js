@@ -14,5 +14,4 @@ router.get('/get', async function (req, res) {
     res.status(200)
 })
 
-
 module.exports = router
