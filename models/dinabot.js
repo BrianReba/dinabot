@@ -22,11 +22,30 @@ const create = async (dinabot) => {
 }
 
 const getBot = async (id) => {
-    const dinaOption = DinabotModel.find({id}) 
+    const dinaOption = await DinabotModel.findOne({
+        _id: id
+    }) 
     return dinaOption
+}
+
+const updateBot = async (dinabot) => {
+    const updatedBot = await DinabotModel.updateOne({
+        _id: dinabot._id
+    }, dinabot)
+ 
+    return updatedBot
+ }
+
+const deleteBot = async (id) => {
+    await DinabotModel.deleteOne({
+        _id: id
+    })
+    return 'Borrado correctamente'
 }
 
 module.exports = {
     create,
     getBot,
+    deleteBot,
+    updateBot
 }
