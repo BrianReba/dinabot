@@ -8,12 +8,9 @@ router.post('/create', async function (req, res) {
     res.status(201)
 })
 
-router.get('/get', function (req, res) {
-    res.json({
-        name: 'Dinabot', 
-        author: 'Dinacompany', 
-        date: new Date()
-    })
+router.get('/get', async function (req, res) {
+    const dinaGet = await dinabotService.getBot(req.body.id)
+    res.json(dinaGet)
     res.status(200)
 })
 

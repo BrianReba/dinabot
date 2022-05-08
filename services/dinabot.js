@@ -5,6 +5,13 @@ const createBot = async (dinabot) => {
     return dinabotResponse
 } 
 
+const getBot = async (id) => {
+    const dinabotGet = await dinabotModel.getBot(id)
+    return dinabotGet
+}
+
 module.exports = {
-    createBot
+    createBot,
+    getBot,
+
 }

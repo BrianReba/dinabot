@@ -21,6 +21,12 @@ const create = async (dinabot) => {
     return dinabotObject
 }
 
+const getBot = async (id) => {
+    const dinaOption = DinabotModel.find({id}) 
+    return dinaOption
+}
+
 module.exports = {
-    create
+    create,
+    getBot,
 }
