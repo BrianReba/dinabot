@@ -1,6 +1,4 @@
 const express = require('express')
-const res = require('express/lib/response')
-const { restart } = require('nodemon')
 const router = express.Router()
 const dinabotService = require('../../services/dinabot')
 
