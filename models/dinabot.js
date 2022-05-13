@@ -28,10 +28,17 @@ const getBot = async (id) => {
     return dinaOption
 }
 
-const updateBot = async (dinabot) => {
-    const updatedBot = await DinabotModel.updateOne({
-        _id: dinabot._id
-    }, dinabot)
+const updateBot = async (id, dinabot) => {
+
+    const dinabotUpdate = {
+        name: dinabot.name,
+        questionId: dinabot.questionId
+    }
+    
+    const updatedBot = await DinabotModel.findOneAndUpdate({
+        _id: id
+        
+    }, dinabotUpdate, {new: true})
  
     return updatedBot
  }
