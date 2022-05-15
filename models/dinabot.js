@@ -56,7 +56,6 @@ const addQuestion = async (question, id) => {
 
     const dinabot = await DinabotModel.findOneAndUpdate({
         _id: id
-
     },
     {
         $push: { questionList: question }
