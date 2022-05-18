@@ -7,6 +7,10 @@ const question = new mongoose.Schema({
     responseType: String,
     path: String,
     internalName: String,
+    position: {
+        left: Number,
+        top: Number
+    }
 })
 
 module.exports = {

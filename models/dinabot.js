@@ -7,7 +7,6 @@ const dinabot = new mongoose.Schema({
     questionList: [question]
 })
 
-
 const DinabotModel = mongoose.model('Dinabot', dinabot)
 
 const create = async (dinabot) => {
