@@ -10,12 +10,13 @@ const dinabot = new mongoose.Schema({
 const DinabotModel = mongoose.model('Dinabot', dinabot)
 
 const create = async (dinabot) => {
+    
     const dinabotObject = {
         _id: new mongoose.Types.ObjectId(),
         name: dinabot.name,
         questionList: dinabot.questionList
     }
-
+    dinabotObject.questionList.forEach(question => question._id = new mongoose.Types.ObjectId())
     const model = new DinabotModel(dinabotObject)
     await model.save()
     return dinabotObject
@@ -29,7 +30,6 @@ const getBot = async (id) => {
 }
 
 const updateBot = async (id, dinabot) => {
-
     const dinabotUpdate = {
         name: dinabot.name,
         questionId: dinabot.questionId
