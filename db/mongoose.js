@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const config = require('../config/config')
-
 const connect = () => {
     mongoose.connect(config.db.mongo)
     .catch(err => {

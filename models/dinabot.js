@@ -1,21 +1,22 @@
 const { mongoose } = require('../db/mongoose')
+const { question } = require('./question')
 
 const dinabot = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: String,
-    questionId: mongoose.Schema.Types.ObjectId
+    questionList: [question]
 })
-
 
 const DinabotModel = mongoose.model('Dinabot', dinabot)
 
 const create = async (dinabot) => {
+    
     const dinabotObject = {
         _id: new mongoose.Types.ObjectId(),
         name: dinabot.name,
-        questionId: new mongoose.Types.ObjectId()
+        questionList: dinabot.questionList
     }
-
+    dinabotObject.questionList.forEach(question => question._id = new mongoose.Types.ObjectId())
     const model = new DinabotModel(dinabotObject)
     await model.save()
     return dinabotObject
@@ -29,7 +30,6 @@ const getBot = async (id) => {
 }
 
 const updateBot = async (id, dinabot) => {
-
     const dinabotUpdate = {
         name: dinabot.name,
         questionId: dinabot.questionId
@@ -50,9 +50,25 @@ const deleteBot = async (id) => {
     return 'Borrado correctamente'
 }
 
+const addQuestion = async (question, id) => {
+    question._id = new mongoose.Types.ObjectId()
+
+    const dinabot = await DinabotModel.findOneAndUpdate({
+        _id: id
+    },
+    {
+        $push: { questionList: question }
+    },
+    {new: true}) 
+
+    return dinabot
+   
+}
+
 module.exports = {
     create,
     getBot,
     deleteBot,
-    updateBot
+    updateBot,
+    addQuestion,
 }
