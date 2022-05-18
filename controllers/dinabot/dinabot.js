@@ -40,10 +40,10 @@ router.put('/', async function (req, res) {
 //Agregue
 router.delete('/', async function (req, res) {
     try {
-        const dinoDelete = await dinabotService.deleteBot(req.body)
+        const dinoDelete = await dinabotService.deleteBot(req.query.id)
         res.json(dinoDelete)
         res.status(200)
-    } catch{
+    } catch (error) {
         res.json(error.message)
         res.status(error.status)
     }
